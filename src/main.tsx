@@ -9,7 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/online-todo-list">
       <Provider store={store}>
         <App />
         <Toaster />
