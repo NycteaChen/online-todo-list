@@ -1,50 +1,59 @@
-# React + TypeScript + Vite
+# Online To-Do list
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Sign-In](https://i.imgur.com/CHeBURk.png)
+![To-Do list](https://i.imgur.com/mnj6obU.png)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+A React SPA to-do list practice using redux (old version), Shadcn/ui, TailwindCSS, and jest test.
 
-## Expanding the ESLint configuration
+This project was bootstrapped with [React + TypeScript + Vite](https://vitejs.dev/guide/).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies
 
-- Configure the top-level `parserOptions` property like this:
+- Vite
+- React
+- React-Router
+- React-Redux / Redux
+- TypeScript
+- Shadcn/ui
+- TailwindCSS
+- React-Hook-Form
+- Zod
+- Jest
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Install
+
+Node.js at least v18.12
+
+### Clone repo
+
+```bash
+git clone https://github.com/NycteaChen/online-todo-list.git
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Install package
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+npm install
 ```
+or
+
+```bash
+pnpm install
+```
+
+### Run repo
+
+```bash
+npm run dev
+```
+or
+
+```bash
+pnpm dev
+```
+
+## Sources
+To-Do list Api - [六角學院 - TodoList API](https://todolist-api.hexschool.io/doc/)
+
+UI Design - [六角學院](https://www.hexschool.com/)
