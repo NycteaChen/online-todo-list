@@ -37,7 +37,7 @@ export const SignIn = () => {
   const onSubmit = async (values: z.infer<typeof signInSchema>) => {
     setBtnDisabled(true);
     const res = await signIn(values);
-    if (res.status) {
+    if (res?.status) {
       dispatch(setUserSignIn(res));
 
       redirect("/");
@@ -48,7 +48,7 @@ export const SignIn = () => {
     } else {
       toast({
         variant: "destructive",
-        title: `登入失敗，${res.message}`,
+        title: `登入失敗，${res?.message}`,
       });
     }
 
@@ -87,10 +87,11 @@ export const SignIn = () => {
                       placeholder={`請輸入${item.label}`}
                       type={item.type}
                       autoComplete="on"
+                      data-testid={`${item.name}-input`}
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage data-testid={`${item.name}-message`} />
                 </FormItem>
               )}
             />
@@ -98,6 +99,7 @@ export const SignIn = () => {
           <Button
             type="submit"
             className="mx-auto block"
+            data-testid="submit-button"
             disabled={btnDisabled}
           >
             {AuthText.SIGN_IN}
