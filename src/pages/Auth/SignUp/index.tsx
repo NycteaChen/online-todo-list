@@ -38,7 +38,7 @@ export const SignUp = () => {
     setBtnDisabled(true);
 
     const res = await signUp(values);
-    if (res.status) {
+    if (res?.status) {
       navigate("/auth/sign-in");
       toast({
         variant: "success",
@@ -47,7 +47,7 @@ export const SignUp = () => {
     } else {
       toast({
         variant: "destructive",
-        title: `註冊失敗，${res.message}`,
+        title: `註冊失敗，${res?.message}`,
       });
     }
 
@@ -97,10 +97,11 @@ export const SignUp = () => {
                       placeholder={`請輸入${item.label}`}
                       type={item.type}
                       autoComplete="on"
+                      data-testid={`${item.name}-input`}
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage data-testid={`${item.name}-message`} />
                 </FormItem>
               )}
             />
@@ -108,6 +109,7 @@ export const SignUp = () => {
           <Button
             type="submit"
             className="mx-auto block"
+            data-testid="submit-button"
             disabled={btnDisabled}
           >
             {AuthText.SIGN_UP}
