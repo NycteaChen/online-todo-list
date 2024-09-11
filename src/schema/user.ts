@@ -15,7 +15,7 @@ const otherSchema = z.object({
       message: "確認密碼至少 6 個字元",
     })
     .max(16, {
-      message: "密碼最多 16 個字元",
+      message: "確認密碼最多 16 個字元",
     }),
 });
 
