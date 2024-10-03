@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useContext } from "react";
+import { useState, useEffect, useMemo, useCallback, useContext } from "react";
 import { useDispatch } from "react-redux";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -15,7 +15,7 @@ export const ToDoInput = () => {
   const [value, setValue] = useState("");
   const [btnLoading, setBtnLoading] = useState(false);
 
-  const getToDoList = async () => {
+  const getToDoList = useCallback(async () => {
     const res = await getToDos();
     if (res.status) {
       dispatch(setToDoList(res.data));
@@ -25,7 +25,7 @@ export const ToDoInput = () => {
         variant: "destructive",
       });
     }
-  };
+  }, [dispatch, toast]);
 
   const addToDoHandler = async () => {
     setBtnLoading(true);
@@ -55,7 +55,7 @@ export const ToDoInput = () => {
       await getToDoList();
       setLoading(false);
     })();
-  }, []);
+  }, [getToDoList, setLoading]);
 
   return (
     <div className="relative">

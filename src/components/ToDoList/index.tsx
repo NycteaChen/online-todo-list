@@ -1,4 +1,4 @@
-import { useMemo, useState, memo } from "react";
+import { useMemo, useState, memo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { toDoListType } from "@/types/todo";
 import { ToDoTab } from "@/components/ToDoTab";
@@ -23,19 +23,15 @@ export const ToDoList = memo(() => {
     }
   }, [tab, toDoList]);
 
-  const clickTab = (value: string) => {
+  const clickTab = useCallback((value: string) => {
     setTab(value);
-  };
-
-  const tabProps = useMemo(() => {
-    return { tabValue: tab, onClick: clickTab };
-  }, [tab]);
+  }, []);
 
   return (
     <>
       {toDoList.length ? (
         <section className="bg-white component-shadow rounded-[10px] text-sm">
-          <ToDoTab {...tabProps} />
+          <ToDoTab tabValue={tab} onClick={clickTab} />
           <ul className="pt-2 px-6 relative">
             {renderToDoList.length ? (
               renderToDoList.map((item) => (
